@@ -1,31 +1,58 @@
-/* Styling for Wishlist and Quantity buttons */
-.wishlist-btn {
-    background: white;
-    border: 1px solid #ff4d4d;
-    color: #ff4d4d;
-    padding: 5px;
-    width: 100%;
-    border-radius: 5px;
-    margin-bottom: 8px;
-    font-size: 12px;
+let cart = [];
+let wishlist = [];
+
+// --- MODAL CONTROLS ---
+function openModal(id) { document.getElementById(id).style.display = 'block'; }
+function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+// --- 8. VIEW DETAILS ---
+function showDetails(name, info) {
+    document.getElementById('detail-name').innerText = name;
+    document.getElementById('detail-info').innerText = info;
+    openModal('details-modal');
 }
 
-.quantity-controls {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    margin: 10px 0;
+// --- 3. SEARCH LOGIC ---
+document.getElementById('product-search').addEventListener('input', function(e) {
+    let term = e.target.value.toLowerCase();
+    let cards = document.querySelectorAll('.product-card');
+    cards.forEach(card => {
+        let name = card.querySelector('h3').innerText.toLowerCase();
+        card.style.display = name.includes(term) ? "block" : "none";
+    });
+});
+
+// --- 5. QUANTITY LOGIC ---
+function changeQty(btn, change) {
+    const input = btn.parentElement.querySelector('.qty-input');
+    let val = parseInt(input.value) + change;
+    if (val >= 1) input.value = val;
 }
 
-.quantity-controls button {
-    width: 30px;
-    height: 30px;
-    background: #eee;
-    border: 1px solid #ccc;
+// --- 6 & 7. CART & WISHLIST ---
+function addToCart(name, price, btn) {
+    const qty = parseInt(btn.parentElement.querySelector('.qty-input').value);
+    cart.push({ name, price, qty });
+    document.getElementById('cart-count').innerText = cart.length;
+    renderCart();
+    alert(qty + " " + name + " added to cart!");
 }
 
-.qty-input {
-    width: 40px;
-    text-align: center;
-    border: 1px solid #ccc;
+function addToWishlist(name) {
+    if (!wishlist.includes(name)) {
+        wishlist.push(name);
+        document.getElementById('wish-count').innerText = wishlist.length;
+        renderWishlist();
+        alert(name + " added to wishlist!");
+    }
+}
+
+function renderCart() {
+    let div = document.getElementById('cart-items');
+    div.innerHTML = cart.map(i => `<p>${i.qty}x ${i.name} - ₹${i.price * i.qty}</p>`).join('') || "Empty";
+}
+
+function renderWishlist() {
+    let div = document.getElementById('wishlist-items');
+    div.innerHTML = wishlist.map(i => `<p>❤️ ${i}</p>`).join('') || "Empty";
 }
