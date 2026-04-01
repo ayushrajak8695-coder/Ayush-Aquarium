@@ -54,3 +54,19 @@ function placeOrder() {
     updateCounts();
     closeModal('cart-modal');
 }
+function changeQty(btn, change) {
+    // Finds the input field right next to the button that was clicked
+    const input = btn.parentElement.querySelector('.qty-input');
+    let currentValue = parseInt(input.value);
+    
+    // Updates the value but keeps it at 1 or higher
+    if (currentValue + change >= 1) {
+        input.value = currentValue + change;
+    }
+}
+
+// Update your existing addToCart function to include the quantity
+function addToCart(name, price) {
+    // You can now grab the quantity from the input field if needed
+    alert(name + " added to cart!");
+}
