@@ -1,4 +1,4 @@
-/* Base Styles for all devices */
+/* General Setup */
 * {
     box-sizing: border-box;
 }
@@ -7,94 +7,126 @@ html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden; /* Fixes the white space on the right */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
 }
 
+/* Header Fixes */
 header {
-    background-color: #f8f9fa;
-    padding: 10px 20px;
-    border-bottom: 2px solid #0000ff;
+    background-color: white;
+    padding: 10px;
+    border-bottom: 2px solid blue;
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    gap: 5px;
 }
 
 .nav-left .main-title {
-    color: #0000ff;
+    color: blue;
+    font-size: 18px;
     margin: 0;
-    font-size: 24px;
+    white-space: nowrap;
 }
 
 #product-search {
-    padding: 8px;
-    border-radius: 20px;
+    width: 100px; /* Shortened search bar to save space */
+    padding: 5px;
+    border-radius: 15px;
     border: 1px solid #ccc;
-    width: 300px;
+    font-size: 12px;
 }
 
 .nav-right {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 8px; /* Tight gap so they stay on one line */
 }
 
-/* Product Section */
+/* Header Icons Text */
+.nav-right span, .nav-right a {
+    font-size: 11px;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+}
+
+/* Menu Dropdown Fix */
+.menu-container {
+    position: relative;
+    display: inline-block;
+}
+
+.menu-content {
+    display: none; /* Hidden by default */
+    position: absolute;
+    right: 0;
+    background-color: white;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 100;
+    border-radius: 5px;
+}
+
+.menu-content a {
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #eee;
+}
+
+.menu-container:hover .menu-content {
+    display: block; /* Shows Home, Account, etc. when hovering/clicking Menu */
+}
+
+/* Product Grid - 2 per line on mobile */
 .product-container {
     display: flex;
     flex-wrap: wrap;
+    padding: 10px;
+    gap: 10px;
     justify-content: center;
-    padding: 20px;
-    gap: 20px;
 }
 
 .product-card {
-    border: 1px solid #eee;
-    border-radius: 15px;
-    padding: 15px;
-    width: 30%; /* Default for PC (3 fish per row) */
-    min-width: 280px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 8px;
+    width: calc(50% - 15px); /* Forces exactly 2 items per row */
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background: white;
 }
 
 .product-card img {
     width: 100%;
     height: auto;
-    border-radius: 10px;
+    border-radius: 5px;
+}
+
+.product-card h3 {
+    font-size: 14px;
+    margin: 5px 0;
 }
 
 .btn-add-cart {
     background-color: #28a745;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
+    padding: 8px;
     width: 100%;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
 }
 
-/* --- MOBILE RESPONSIVE FIXES --- */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        text-align: center;
-        padding: 15px;
-    }
-
-    .nav-left, .nav-right {
-        width: 100%;
-        justify-content: center;
-        margin-bottom: 10px;
-    }
-
+/* Desktop Fix (3 or 4 per line) */
+@media (min-width: 800px) {
     #product-search {
-        width: 90%; /* Search bar fits phone screen */
+        width: 250px;
     }
-
     .product-card {
-        width: 95%; /* Fish cards stack vertically on phone */
-        margin: 10px 0;
+        width: 22%;
     }
 }
