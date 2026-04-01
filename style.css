@@ -1,98 +1,45 @@
 * { box-sizing: border-box; }
-body { margin: 0; font-family: sans-serif; background-color: #f9f9f9; overflow-x: hidden; }
+body { margin: 0; font-family: sans-serif; background-color: #f4f4f4; }
 
-/* Center Title */
-.main-title { text-align: center; color: blue; margin: 15px 0; font-size: 26px; }
+/* 9. Heading Top Center */
+.main-title { text-align: center; color: blue; margin: 15px 0; font-size: 28px; }
 
-/* One-line Navigation */
+/* 5. Nav Items One Line */
 .nav-container { 
     display: flex; align-items: center; justify-content: space-between; 
-    padding: 10px; background: white; border-bottom: 1px solid #ddd; position: sticky; top: 0; z-index: 100;
+    padding: 10px; background: white; border-bottom: 1px solid #ddd;
 }
+.menu-wrapper { width: 25%; }
+.menu-btn { background: blue; color: white; border: none; padding: 8px; border-radius: 5px; width: 100%; cursor: pointer; }
 
-.menu-wrapper { width: 20%; position: relative; }
-.menu-btn { background: blue; color: white; border: none; padding: 8px; border-radius: 5px; width: 100%; }
+#product-search { width: 45%; padding: 8px; border-radius: 20px; border: 1px solid #ccc; }
 
-#product-search { width: 45%; padding: 8px 15px; border-radius: 20px; border: 1px solid #ccc; }
-
-.nav-right { width: 30%; display: flex; justify-content: flex-end; gap: 15px; font-weight: bold; }
-.icon-group { cursor: pointer; position: relative; }
+.nav-right { width: 30%; display: flex; justify-content: flex-end; gap: 15px; }
+.icon-group { cursor: pointer; position: relative; font-size: 20px; }
 .count { background: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 10px; position: absolute; top: -5px; right: -10px; }
 
-/* Menu Dropdown */
-.side-menu { display: none; position: absolute; top: 45px; left: 0; background: white; box-shadow: 0 4px 10px rgba(0,0,0,0.2); width: 160px; }
-.side-menu a { display: block; padding: 12px; text-decoration: none; color: #333; border-bottom: 1px solid #eee; }
+/* 10. Headings Middle */
+.section-title { text-align: center; margin: 25px 0; font-weight: bold; }
 
-/* 2-Column Grid */
-.section-title { text-align: center; margin: 20px 0; color: #333; }
+/* 4. Two fish per row */
 .product-container { display: flex; flex-wrap: wrap; padding: 10px; gap: 10px; justify-content: center; }
-.product-card { width: calc(50% - 15px); background: white; border-radius: 10px; padding: 10px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-.product-card img { width: 100%; border-radius: 8px; margin-bottom: 10px; }
-.price { font-weight: bold; color: #444; }
+.product-card { width: calc(50% - 15px); background: white; border-radius: 8px; padding: 10px; text-align: center; position: relative; }
+.product-card img { width: 100%; height: 140px; object-fit: cover; border-radius: 5px; }
+
+.wishlist-heart { position: absolute; top: 5px; right: 5px; background: none; border: none; font-size: 20px; cursor: pointer; }
+
+/* 8. View Details Button */
+.details-btn { background: #eee; border: 1px solid #ddd; width: 100%; padding: 5px; margin: 5px 0; border-radius: 4px; font-size: 11px; }
+
+.price { font-weight: bold; margin: 8px 0; }
+
+.quantity-controls { display: flex; justify-content: center; gap: 5px; margin-bottom: 8px; }
+.qty-input { width: 35px; text-align: center; border: 1px solid #ccc; }
+
+.add-btn { background: #28a745; color: white; border: none; width: 100%; padding: 10px; border-radius: 5px; font-weight: bold; }
 
 /* Modals */
 .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; }
-.modal-content { background: white; width: 85%; margin: 15% auto; padding: 20px; border-radius: 10px; display: flex; flex-direction: column; gap: 10px; max-height: 80vh; overflow-y: auto; }
-.modal-content input, textarea { padding: 10px; border: 1px solid #ccc; border-radius: 5px; width: 100%; }
-
-/* Buttons */
-.view-btn { background: #eee; border: 1px solid #ddd; padding: 6px; width: 100%; margin-bottom: 5px; border-radius: 4px; }
-.add-btn { background: #28a745; color: white; border: none; padding: 8px; width: 100%; border-radius: 4px; font-weight: bold; }
-.order-btn { background: blue; color: white; border: none; padding: 12px; border-radius: 5px; }
-.close-btn { background: #666; color: white; border: none; padding: 8px; border-radius: 5px; }
-.quantity-controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    margin-bottom: 10px;
-}
-
-.qty-btn {
-    background-color: #eee;
-    border: 1px solid #ccc;
-    width: 30px;
-    height: 30px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.qty-input {
-    width: 40px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 4px;
-}
-/* Styling for Wishlist and Quantity buttons */
-.wishlist-btn {
-    background: white;
-    border: 1px solid #ff4d4d;
-    color: #ff4d4d;
-    padding: 5px;
-    width: 100%;
-    border-radius: 5px;
-    margin-bottom: 8px;
-    font-size: 12px;
-}
-
-.quantity-controls {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    margin: 10px 0;
-}
-
-.quantity-controls button {
-    width: 30px;
-    height: 30px;
-    background: #eee;
-    border: 1px solid #ccc;
-}
-
-.qty-input {
-    width: 40px;
-    text-align: center;
-    border: 1px solid #ccc;
-}
+.modal-content { background: white; width: 85%; margin: 15% auto; padding: 20px; border-radius: 10px; position: relative; display: flex; flex-direction: column; gap: 10px; }
+.close-x { position: absolute; right: 10px; top: 10px; font-size: 25px; background: none; border: none; cursor: pointer; }
+.save-btn { background: blue; color: white; padding: 10px; border: none; border-radius: 5px; }
