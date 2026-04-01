@@ -1,123 +1,56 @@
 let cart = [];
 let wishlist = [];
 
-// Navigation
-function showSection(id) {
-    document.getElementById('home-section').style.display = id === 'home' ? 'block' : 'none';
-    document.getElementById('contact-section').style.display = id === 'contact' ? 'block' : 'none';
-    document.getElementById('order-info-section').style.display = id === 'order-info' ? 'block' : 'none';
+// Toggle the side menu
+function toggleMenu() {
+    let menu = document.getElementById('side-menu');
+    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
 }
 
-function toggleSidebar(id) {
-    let el = document.getElementById(id);
-    el.style.width = el.style.width === "350px" ? "0" : "350px";
+// Modal management
+function openModal(id) {
+    document.getElementById(id).style.display = 'block';
+    if(id === 'side-menu') toggleMenu();
 }
 
-function changeQty(btn, amt) {
-    let span = btn.parentElement.querySelector('.qty');
-    let val = parseInt(span.innerText) + amt;
-    if (val < 1) val = 1;
-    span.innerText = val;
+function closeModal(id) {
+    document.getElementById(id).style.display = 'none';
 }
 
-function searchProducts() {
-    let term = document.getElementById('productSearch').value.toLowerCase();
-    document.querySelectorAll('.product-card').forEach(card => {
-        let name = card.getAttribute('data-name').toLowerCase();
-        card.style.display = name.includes(term) ? "block" : "none";
-    });
+// Fix View Details
+function showDetails(name, info) {
+    alert(name + ": " + info);
 }
 
-// Cart
-function addToCart(btn) {
-    let card = btn.closest('.product-card');
-    let name = card.getAttribute('data-name');
-    let price = parseInt(card.getAttribute('data-price'));
-    let qty = parseInt(card.querySelector('.qty').innerText);
-
-    let existing = cart.find(i => i.name === name);
-    if (existing) { existing.qty += qty; } else { cart.push({ name, price, qty }); }
+// Cart Logic
+function addToCart(name, price) {
+    cart.push({name, price});
+    updateCounts();
     renderCart();
-    alert("Added to cart!");
+    alert(name + " added to cart!");
+}
+
+function updateCounts() {
+    document.getElementById('cart-count').innerText = cart.length;
 }
 
 function renderCart() {
-    let list = document.getElementById('cart-items-list');
-    let total = 0; list.innerHTML = "";
-    cart.forEach((item, i) => {
-        total += item.price * item.qty;
-        list.innerHTML += `<div style="padding:10px; border-bottom:1px solid #eee;">
-            <b>${item.name}</b><br>₹${item.price} x ${item.qty}
-            <button onclick="updateCartQty(${i}, 1)">+</button> <button onclick="updateCartQty(${i}, -1)">-</button>
-        </div>`;
-    });
-    document.getElementById('cart-count').innerText = cart.length;
-    document.getElementById('total-price').innerText = total;
-}
-
-function updateCartQty(idx, amt) {
-    cart[idx].qty += amt;
-    if (cart[idx].qty < 1) cart.splice(idx, 1);
-    renderCart();
-}
-
-// Wishlist
-function addToWishlist(name, price, img) {
-    if (!wishlist.find(i => i.name === name)) {
-        wishlist.push({name, price, img});
-        renderWishlist();
-        alert("Added to wishlist! ❤️");
+    let cartDiv = document.getElementById('cart-items');
+    if(cart.length === 0) {
+        cartDiv.innerHTML = "No items in cart.";
+    } else {
+        cartDiv.innerHTML = cart.map((item, index) => 
+            `<div style="display:flex; justify-content:space-between;">
+                <span>${item.name}</span> <span>₹${item.price}</span>
+            </div>`
+        ).join('');
     }
 }
 
-function renderWishlist() {
-    let list = document.getElementById('wishlist-items-list');
-    let countDisp = document.getElementById('wishlist-count');
-    list.innerHTML = "";
-    wishlist.forEach((i, idx) => {
-        list.innerHTML += `<div style="padding:10px; border-bottom:1px solid #eee;">
-            <img src="${i.img}" width="40"> <b>${i.name}</b><br>₹${i.price}
-            <button onclick="removeFromWishlist(${idx})">Remove</button>
-        </div>`;
-    });
-    countDisp.innerText = wishlist.length;
+function placeOrder() {
+    if(cart.length === 0) return alert("Cart is empty!");
+    alert("Order Placed Successfully! We will contact you soon.");
+    cart = [];
+    updateCounts();
+    closeModal('cart-modal');
 }
-
-function removeFromWishlist(idx) {
-    wishlist.splice(idx, 1);
-    renderWishlist();
-}
-
-// Account & WhatsApp
-function saveAccount() {
-    let data = {
-        name: document.getElementById('acc-name').value,
-        phone: document.getElementById('acc-phone').value,
-        address: document.getElementById('acc-address').value
-    };
-    localStorage.setItem('ayushAccount', JSON.stringify(data));
-    alert("Details Saved!");
-}
-
-function sendToWhatsApp() {
-    if (cart.length === 0) return alert("Cart is empty!");
-    let user = JSON.parse(localStorage.getItem('ayushAccount'));
-    if (!user || !user.name) return alert("Please save your account details first!");
-
-    let msg = `Order from Ayush Aquarium:%0A%0A*Details:*%0AName: ${user.name}%0AAddress: ${user.address}%0A%0A*Items:*%0A`;
-    cart.forEach(i => { msg += `- ${i.name} (x${i.qty}): ₹${i.price * i.qty}%0A`; });
-    window.open(`https://wa.me/919641689471?text=${msg}`);
-}
-
-// Replace your old showDetails function with this one
-function showDetails(name, price, img, description) {
-    document.getElementById('modal-name').innerText = name;
-    document.getElementById('modal-img').src = img;
-    
-    // This line now uses the specific description you typed in the HTML
-    document.getElementById('modal-desc').innerText = description; 
-    
-    document.getElementById('modal-price-display').innerText = "Price: ₹" + price;
-    document.getElementById('details-modal').style.display = "block";
-}
-function closeDetails() { document.getElementById('details-modal').style.display = "none"; }
