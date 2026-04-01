@@ -120,6 +120,21 @@
         <button class="add-btn" onclick="addToCart('Air Pump', 350, this)">Add to Cart</button>
     </div>
 </div>
+
+        <div class="product-card">
+        <button class="wishlist-heart" onclick="addToWishlist('Tokyo)">❤️</button>
+        <img src="image%20folder/Tokyo.jpg" alt="Tokyo">
+        <h3>Tokyo</h3>
+        <button class="details-btn" onclick="showDetails('Tokyo, 'This product is very good.')">View Details</button>
+        <p class="price">₹100</p>
+        <div class="quantity-controls">
+            <button onclick="changeQty(this, -1)">-</button>
+            <input type="number" class="qty-input" value="1" min="1" readonly>
+            <button onclick="changeQty(this, 1)">+</button>
+        </div>
+        <button class="add-btn" onclick="addToCart('Tokyo, 100, this)">Add to Cart</button>
+    </div>
+</div>
     
 <script src="script.js"></script>
 </body>
