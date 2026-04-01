@@ -1,4 +1,4 @@
-/* General Setup */
+/* Professional Mobile-First Design */
 * {
     box-sizing: border-box;
 }
@@ -8,79 +8,89 @@ html, body {
     padding: 0;
     width: 100%;
     overflow-x: hidden;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background-color: #f4f7f6;
 }
 
-/* Header Fixes */
+/* Header: Title at Top Center */
 header {
-    background-color: white;
-    padding: 10px;
-    border-bottom: 2px solid blue;
+    background-color: #ffffff;
+    padding: 15px 0 10px 0;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.main-title {
+    color: #0000ff;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* Navigation Bar: All on one line below title */
+.nav-bar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    padding: 0 10px;
     gap: 5px;
 }
 
-.nav-left .main-title {
-    color: blue;
-    font-size: 18px;
-    margin: 0;
-    white-space: nowrap;
-}
-
 #product-search {
-    width: 100px; /* Shortened search bar to save space */
-    padding: 5px;
-    border-radius: 15px;
-    border: 1px solid #ccc;
-    font-size: 12px;
+    width: 45%; /* Medium size search bar */
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: 1px solid #bbb;
+    font-size: 14px;
 }
 
-.nav-right {
+.nav-icons {
     display: flex;
+    gap: 12px;
     align-items: center;
-    gap: 8px; /* Tight gap so they stay on one line */
+    font-size: 12px;
+    font-weight: 500;
 }
 
-/* Header Icons Text */
-.nav-right span, .nav-right a {
-    font-size: 11px;
-    text-decoration: none;
-    color: black;
-    text-align: center;
-}
-
-/* Menu Dropdown Fix */
+/* Dropdown Menu Styling */
 .menu-container {
     position: relative;
-    display: inline-block;
+}
+
+.menu-btn {
+    background: #0000ff;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .menu-content {
-    display: none; /* Hidden by default */
+    display: none;
     position: absolute;
     right: 0;
-    background-color: white;
-    min-width: 120px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-    z-index: 100;
-    border-radius: 5px;
-}
-
-.menu-content a {
-    color: black;
-    padding: 10px;
-    text-decoration: none;
-    display: block;
-    border-bottom: 1px solid #eee;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    width: 140px;
+    border-radius: 4px;
 }
 
 .menu-container:hover .menu-content {
-    display: block; /* Shows Home, Account, etc. when hovering/clicking Menu */
+    display: block;
 }
 
-/* Product Grid - 2 per line on mobile */
+.menu-content a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    border-bottom: 1px solid #eee;
+}
+
+/* Professional 2-Column Grid */
 .product-container {
     display: flex;
     flex-wrap: wrap;
@@ -90,43 +100,50 @@ header {
 }
 
 .product-card {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 8px;
-    width: calc(50% - 15px); /* Forces exactly 2 items per row */
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     background: white;
+    border-radius: 8px;
+    width: calc(50% - 15px); /* Exactly 2 per row on mobile */
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
 }
 
 .product-card img {
     width: 100%;
-    height: auto;
+    aspect-ratio: 1/1; /* Makes all images square and uniform */
+    object-fit: cover;
     border-radius: 5px;
 }
 
 .product-card h3 {
-    font-size: 14px;
-    margin: 5px 0;
+    font-size: 15px;
+    margin: 8px 0 4px 0;
+    color: #333;
+}
+
+.price {
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 8px;
 }
 
 .btn-add-cart {
     background-color: #28a745;
     color: white;
     border: none;
-    padding: 8px;
+    padding: 8px 0;
     width: 100%;
-    border-radius: 5px;
-    font-size: 12px;
+    border-radius: 4px;
+    font-size: 13px;
     cursor: pointer;
 }
 
-/* Desktop Fix (3 or 4 per line) */
-@media (min-width: 800px) {
-    #product-search {
-        width: 250px;
-    }
+/* Desktop View: 4 per row */
+@media (min-width: 900px) {
     .product-card {
-        width: 22%;
+        width: calc(25% - 20px);
+    }
+    #product-search {
+        width: 300px;
     }
 }
