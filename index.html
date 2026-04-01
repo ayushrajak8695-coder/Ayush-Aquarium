@@ -1,171 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="google-site-verification" content="RmFDNDJ1VFjboi0gZWWMUpWmdaqdo70pXR-Ul0uYJlk" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ayush Aquarium | Store</title>
+    <title>Ayush Aquarium | Exotic Fish Store</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="navbar">
-        <div class="nav-left">
-            <h1 class="main-title">Ayush Aquarium</h1>
+<header>
+    <h1 class="main-title">Ayush Aquarium</h1>
+    <div class="nav-container">
+        <div class="menu-wrapper">
+            <button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
+            <div id="side-menu" class="side-menu">
+                <a href="index.html">Home</a>
+                <a href="javascript:void(0)" onclick="openModal('account-modal')">Account</a>
+                <a href="#">Order Info</a>
+                <a href="#">Contact</a>
+            </div>
         </div>
-        
+
+        <input type="text" id="product-search" placeholder="Search fish...">
+
         <div class="nav-right">
-            <div class="search-box">
-                <input type="text" id="productSearch" placeholder="Search fish..." onkeyup="searchProducts()">
+            <div class="icon-group" onclick="openModal('wishlist-modal')">
+                ❤️ <span id="wish-count" class="count">0</span>
             </div>
-            <div class="nav-icons">
-                <span class="icon-btn" onclick="toggleSidebar('wishlist-sidebar')">❤️ Wishlist (<span id="wishlist-count">0</span>)</span>
-                <span class="icon-btn" onclick="toggleSidebar('cart-sidebar')">🛒 Cart (<span id="cart-count">0</span>)</span>
-            </div>
-            <div class="menu-dropdown">
-                <button class="menu-btn">☰ Menu</button>
-                <div class="menu-content">
-                    <a href="#" onclick="showSection('home')">Home</a>
-                    <a href="#" onclick="toggleSidebar('account-sidebar')">Account</a>
-                    <a href="#" onclick="showSection('order-info')">Order Info</a>
-                    <a href="#" onclick="showSection('contact')">Contact</a>
-                </div>
+            <div class="icon-group" onclick="openModal('cart-modal')">
+                🛒 <span id="cart-count" class="count">0</span>
             </div>
         </div>
-    </header>
-
-    <main id="main-content">
-        <div id="home-section">
-            <section class="category">
-                <h2 class="section-title">Live Fish</h2>
-                <div class="product-grid">
-                    
-                    <div class="product-card" data-name="Betta Fish" data-price="150">
-                        <button class="wish-btn-overlay" onclick="addToWishlist('Betta Fish', 150, 'image folder/Betta.jpg')">❤️ Add to Wishlist</button>
-                        <img src="image folder/Betta.jpg" alt="Betta Fish">
-                        <h3>Betta Fish</h3>
-                        <button class="view-btn" onclick="showDetails('Betta Fish', 150,  'image folder/Betta.jpg','size=1 inch.')">View Details</button>
-                        <p class="price">₹150</p>
-                        <div class="qty-area">
-                            <button onclick="changeQty(this, -1)">-</button>
-                            <span class="qty">1</span>
-                            <button onclick="changeQty(this, 1)">+</button>
-                        </div>
-                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
-                    </div>
-
-                    <div class="product-card" data-name="Goldfish" data-price="250">
-                        <button class="wish-btn-overlay" onclick="addToWishlist('Goldfish', 250, 'image folder/Goldfish.jpg')">❤️ Add to Wishlist</button>
-                        <img src="image folder/Goldfish.jpg" alt="Goldfish">
-                        <h3>Goldfish</h3>
-                        <button class="view-btn" onclick="showDetails('Goldfish', 250, 'image folder/Goldfish.jpg','size=3 inch.')">View Details</button>
-                        <p class="price">₹250</p>
-                        <div class="qty-area">
-                            <button onclick="changeQty(this, -1)">-</button>
-                            <span class="qty">1</span>
-                            <button onclick="changeQty(this, 1)">+</button>
-                        </div>
-                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
-                    </div>
-
-                    <div class="product-card" data-name="Angel Fish" data-price="350">
-                        <button class="wish-btn-overlay" onclick="addToWishlist('Angel Fish', 350, 'image folder/Anglefish.jpg')">❤️ Add to Wishlist</button>
-                        <img src="image folder/Anglefish.jpg" alt="Angel Fish">
-                        <h3>Angel Fish</h3>
-                        <button class="view-btn" onclick="showDetails('Angel Fish', 350, 'image folder/Anglefish.jpg','size=2 inch.')">View Details</button>
-                        <p class="price">₹350</p>
-                        <div class="qty-area">
-                            <button onclick="changeQty(this, -1)">-</button>
-                            <span class="qty">1</span>
-                            <button onclick="changeQty(this, 1)">+</button>
-                        </div>
-                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
-                    </div>
-
-                </div>
-            </section>
-        </div>
-
-         <main id="main-content">
-        <div id="home-section">
-            <section class="category">
-                <h2 class="section-title">Dry Items</h2>
-                <div class="product-grid">
-
-                     <div class="product-card" data-name="Air Pump" data-price="350">
-                        <button class="wish-btn-overlay" onclick="addToWishlist('Air Pump', 350, 'image folder/Air Pump.jpg')">❤️ Add to Wishlist</button>
-                        <img src="image folder/Air Pump.jpg" alt="Air Pump">
-                        <h3>Air Pump</h3>
-                        <button class="view-btn" onclick="showDetails('Air Pump', 350, 'image folder/Air Pump.jpg')">View Details</button>
-                        <p class="price">₹350</p>
-                        <div class="qty-area">
-                            <button onclick="changeQty(this, -1)">-</button>
-                            <span class="qty">1</span>
-                            <button onclick="changeQty(this, 1)">+</button>
-                        </div>
-                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
-                    </div>
-
-        <div id="contact-section" style="display:none; text-align: center; padding: 50px;">
-            <h2>Contact Us</h2>
-            <p>📍 Address: Ayush Aquarium, Darjeeling, West Bengal</p>
-            <p>📞 WhatsApp: +91 96416 89471</p>
-            <button class="view-btn" onclick="showSection('home')">Back to Shop</button>
-        </div>
-
-        <div id="order-info-section" style="display:none; text-align: center; padding: 50px;">
-            <h2>Order Info</h2>
-            <p>Fill your account details, add fish to cart, and send us the order via WhatsApp!</p>
-            <button class="view-btn" onclick="showSection('home')">Back to Shop</button>
-        </div>
-    </main>
-
-    <div id="account-sidebar" class="sidebar">
-    <div class="sidebar-header">
-        <h2>User Account</h2>
-        <button onclick="toggleSidebar('account-sidebar')">Close ×</button>
     </div>
-    <div style="padding: 20px;">
-        <input type="text" id="acc-name" class="form-input" placeholder="Full Name">
-        <input type="text" id="acc-phone" class="form-input" placeholder="Phone Number">
-        
-        <input type="email" id="acc-email" class="form-input" placeholder="Gmail Address">
-        <label for="acc-dob" style="display:block; margin-top:10px; font-size:12px;">Date of Birth:</label>
-        <input type="date" id="acc-dob" class="form-input">
-        <input type="number" id="acc-age" class="form-input" placeholder="Age">
-        <textarea id="acc-address" class="form-input" placeholder="Delivery Address"></textarea>
-        <button class="checkout-btn" onclick="saveAccount()" style="background:#0000FF;">Save Details</button>
+</header>
+
+<div id="account-modal" class="modal">
+    <div class="modal-content">
+        <h3>User Account</h3>
+        <input type="text" placeholder="Full Name">
+        <input type="tel" placeholder="Phone No">
+        <input type="email" placeholder="Gmail">
+        <input type="date">
+        <input type="number" placeholder="Age">
+        <textarea placeholder="Address"></textarea>
+        <button class="save-btn" onclick="closeModal('account-modal')">Save Profile</button>
     </div>
 </div>
 
-    <div id="cart-sidebar" class="sidebar">
-        <div class="sidebar-header"><h2>Your Cart</h2><button onclick="toggleSidebar('cart-sidebar')">Close ×</button></div>
-        <div id="cart-items-list"></div>
-        <div class="sidebar-footer">
-            <h3>Total: ₹<span id="total-price">0</span></h3>
-            <button class="checkout-btn" onclick="sendToWhatsApp()">Order via WhatsApp</button>
-        </div>
+<div id="wishlist-modal" class="modal">
+    <div class="modal-content">
+        <h3>My Wishlist</h3>
+        <div id="wishlist-items">Your wishlist is empty.</div>
+        <button class="close-btn" onclick="closeModal('wishlist-modal')">Close</button>
     </div>
+</div>
 
-    <div id="wishlist-sidebar" class="sidebar">
-        <div class="sidebar-header"><h2>Wishlist ❤️</h2><button onclick="toggleSidebar('wishlist-sidebar')">Close ×</button></div>
-        <div id="wishlist-items-list"></div>
+<div id="cart-modal" class="modal">
+    <div class="modal-content">
+        <h3>My Cart</h3>
+        <div id="cart-items">No items in cart.</div>
+        <hr>
+        <button class="order-btn" onclick="placeOrder()">Order Now</button>
+        <button class="close-btn" onclick="closeModal('cart-modal')">Close</button>
     </div>
+</div>
 
-    <div id="details-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeDetails()">&times;</span>
-            <div class="modal-flex">
-                <img id="modal-img" src="" alt="">
-                <div class="modal-text">
-                    <h2 id="modal-name"></h2>
-                    <p id="modal-desc"></p>
-                    <h3 id="modal-price-display"></h3>
-                </div>
-            </div>
-        </div>
+<h2 class="section-title">Live Fish</h2>
+<div class="product-container">
+    <div class="product-card">
+        <img src="image folder/betta.jpg" alt="Betta">
+        <h3>Betta Fish</h3>
+        <p class="price">₹150</p>
+        <button class="view-btn" onclick="showDetails('Betta Fish', 'Premium Red Betta, perfect for small tanks.')">View Details</button>
+        <button class="add-btn" onclick="addToCart('Betta Fish', 150)">Add to Cart</button>
     </div>
+    
+    <div class="product-card">
+        <img src="image folder/goldfish.jpg" alt="Goldfish">
+        <h3>Goldfish</h3>
+        <p class="price">₹250</p>
+        <button class="view-btn" onclick="showDetails('Goldfish', 'Fancy Orange Goldfish.')">View Details</button>
+        <button class="add-btn" onclick="addToCart('Goldfish', 250)">Add to Cart</button>
+    </div>
+</div>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
-</html> 
+</html>
