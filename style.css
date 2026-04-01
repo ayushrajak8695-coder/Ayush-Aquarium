@@ -1,59 +1,100 @@
-body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #fff; }
-
-.navbar {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 10px 5%; border-bottom: 3px solid #0000FF; position: sticky; top: 0; background: #fff; z-index: 1000;
+/* Base Styles for all devices */
+* {
+    box-sizing: border-box;
 }
-.main-title { color: #0000FF; margin: 0; }
-.nav-right { display: flex; align-items: center; gap: 15px; }
-#productSearch { padding: 8px; border-radius: 20px; border: 1px solid #ccc; }
 
-.menu-dropdown { position: relative; }
-.menu-btn { background: #0000FF; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; }
-.menu-content {
-    display: none; position: absolute; right: 0; background: white; min-width: 150px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Fixes the white space on the right */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.menu-content a { display: block; padding: 10px; text-decoration: none; color: #333; }
-.menu-dropdown:hover .menu-content { display: block; }
 
-/* FIX: 3 FISH PER LINE */
-.product-grid {
+header {
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    border-bottom: 2px solid #0000ff;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start; /* Aligns them to the left */
-    gap: 2%; /* Gap between cards */
-    padding: 20px 5%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-left .main-title {
+    color: #0000ff;
+    margin: 0;
+    font-size: 24px;
+}
+
+#product-search {
+    padding: 8px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    width: 300px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Product Section */
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
 }
 
 .product-card {
-    width: 31%; /* Roughly 1/3 of the width */
-    min-width: 250px; /* Prevents them from getting too small on mobile */
     border: 1px solid #eee;
-    border-radius: 12px;
+    border-radius: 15px;
     padding: 15px;
+    width: 30%; /* Default for PC (3 fish per row) */
+    min-width: 280px;
     text-align: center;
-    margin-bottom: 20px;
-    box-sizing: border-box; /* Includes padding in width calculation */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.product-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; }
-.wish-btn-overlay { background: #fff; border: 1px solid #ff4757; color: #ff4757; padding: 5px; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 10px; }
-.view-btn { background: #0000FF; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; }
-.add-to-cart-btn { width: 100%; background: #28a745; color: white; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer; }
-
-/* SIDEBARS */
-.sidebar {
-    height: 100%; width: 0; position: fixed; right: 0; top: 0; background: #fff; z-index: 2000;
-    transition: 0.3s; overflow-x: hidden; box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
 }
-.sidebar-header { display: flex; justify-content: space-between; padding: 20px; border-bottom: 1px solid #eee; }
-.form-input { width: 90%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px; }
-.checkout-btn { width: 100%; padding: 15px; background: #25D366; color: white; border: none; font-weight: bold; cursor: pointer; }
 
-/* MODAL */
-.modal { display: none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
-.modal-content { background: #fff; margin: 10% auto; padding: 20px; width: 60%; border-radius: 10px; position: relative; }
-.modal-flex { display: flex; gap: 20px; }
-.modal-flex img { width: 50%; border-radius: 10px; }
-.close { position: absolute; right: 20px; top: 10px; font-size: 30px; cursor: pointer; }
+.btn-add-cart {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* --- MOBILE RESPONSIVE FIXES --- */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .nav-left, .nav-right {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    #product-search {
+        width: 90%; /* Search bar fits phone screen */
+    }
+
+    .product-card {
+        width: 95%; /* Fish cards stack vertically on phone */
+        margin: 10px 0;
+    }
+}
