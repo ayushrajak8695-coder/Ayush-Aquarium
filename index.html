@@ -85,11 +85,11 @@
     
     <div class="product-container">
     <div class="product-card">
-    <button class="wishlist-btn" onclick="addToWishlist('Betta Fish')">❤️ Add to Wishlist</button>
+    <button class="wishlist-btn" onclick="addToWishlist('Goldfish')">❤️ Add to Wishlist</button>
     
-    <img src="image%20folder/Betta.jpg" alt="Betta">
-    <h3>Betta Fish</h3>
-    <p>₹150</p>
+    <img src="image%20folder/Goldfish.jpg" alt="Goldfish">
+    <h3>Goldfish</h3>
+    <p>₹80</p>
     
     <div class="quantity-controls">
         <button type="button" onclick="changeQty(this, -1)">-</button>
@@ -97,36 +97,46 @@
         <button type="button" onclick="changeQty(this, 1)">+</button>
     </div>
 
-    <button class="add-btn" onclick="addToCart('Betta Fish', 150, this)">Add to Cart</button>
+    <button class="add-btn" onclick="addToCart('Goldfish', 80, this)">Add to Cart</button>
 </div>
 
     <h2 class="section-title">Dry Items</h2>
 <div class="product-container">
-    <div class="product-card">
-        <img src="image folder/Air Pump.jpg" alt="Air Pump">
-        <h3>Air Pump</h3>
-        <p class="price">₹350</p>
-        <button class="view-btn" onclick="showDetails('Air Pump', 'Te product is very nice.')">View Details</button>
-        <div class="quantity-controls">
-    <button type="button" class="qty-btn" onclick="changeQty(this, -1)">-</button>
-    <input type="number" class="qty-input" value="1" min="1" readonly>
-    <button type="button" class="qty-btn" onclick="changeQty(this, 1)">+</button>
-</div>
-        <button class="add-btn" onclick="addToCart('Air Pump', 350)">Add to Cart</button>
-    </div>
     
-    <div class="product-card">
-        <img src="image folder/Fish Pot.jpg" alt="Fish Pot">
-        <h3>Fish Pot</h3>
-        <p class="price">₹360</p>
-        <button class="view-btn" onclick="showDetails('Fish Pot', 'Fish Pot 10inch.')">View Details</button><div class="quantity-controls">
-    <button type="button" class="qty-btn" onclick="changeQty(this, -1)">-</button>
-    <input type="number" class="qty-input" value="1" min="1" readonly>
-    <button type="button" class="qty-btn" onclick="changeQty(this, 1)">+</button>
-</div>
-        <button class="add-btn" onclick="addToCart('Fish Pot', 360)">Add to Cart</button>
+   <div class="product-card">
+    <button class="wishlist-btn" onclick="addToWishlist('Air Pump')">❤️ Add to Wishlist</button>
+    
+    <img src="image%20folder/Air Pump.jpg" alt="Air Pump">
+    <h3>Air Pump</h3>
+    <p>₹350</p>
+    
+    <div class="quantity-controls">
+        <button type="button" onclick="changeQty(this, -1)">-</button>
+        <input type="number" class="qty-input" value="1" min="1" readonly>
+        <button type="button" onclick="changeQty(this, 1)">+</button>
     </div>
+
+    <button class="add-btn" onclick="addToCart('Air Pump', 350, this)">Add to Cart</button>
 </div>
+    
+    <div class="product-container">
+    
+   <div class="product-card">
+    <button class="wishlist-btn" onclick="addToWishlist('Tokyo')">❤️ Add to Wishlist</button>
+    
+    <img src="image%20folder/Tokyo.jpg" alt="Tokyo">
+    <h3>Tokyo</h3>
+    <p>₹100</p>
+    
+    <div class="quantity-controls">
+        <button type="button" onclick="changeQty(this, -1)">-</button>
+        <input type="number" class="qty-input" value="1" min="1" readonly>
+        <button type="button" onclick="changeQty(this, 1)">+</button>
+    </div>
+
+    <button class="add-btn" onclick="addToCart('Tokyo', 100, this)">Add to Cart</button>
+</div>
+        
 
 <script src="script.js"></script>
 </body>
