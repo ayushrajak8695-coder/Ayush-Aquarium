@@ -40,3 +40,28 @@ body { margin: 0; font-family: sans-serif; background-color: #f9f9f9; overflow-x
 .add-btn { background: #28a745; color: white; border: none; padding: 8px; width: 100%; border-radius: 4px; font-weight: bold; }
 .order-btn { background: blue; color: white; border: none; padding: 12px; border-radius: 5px; }
 .close-btn { background: #666; color: white; border: none; padding: 8px; border-radius: 5px; }
+.quantity-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.qty-btn {
+    background-color: #eee;
+    border: 1px solid #ccc;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.qty-input {
+    width: 40px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px;
+}
