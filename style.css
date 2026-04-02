@@ -1,28 +1,33 @@
-/* Core Styling */
-.main-title { text-align: center; color: #0000FF; margin-top: 10px; }
-.section-title { text-align: center; margin: 20px 0; }
-.nav-container { display: flex; align-items: center; justify-content: space-between; padding: 10px; background: #f9f9f9; position: sticky; top: 0; z-index: 100; }
-#product-search { width: 45%; padding: 5px; border-radius: 15px; border: 1px solid #ccc; }
+body { font-family: sans-serif; margin: 0; background: #f4f4f4; }
+.main-title { text-align: center; color: #00008B; margin: 15px 0; }
+.center-head { text-align: center; margin: 25px 0; font-weight: bold; }
 
-/* 2 Items per row grid */
-.product-container { display: flex; flex-wrap: wrap; gap: 10px; padding: 10px; justify-content: center; }
-.product-card { width: calc(50% - 15px); background: #fff; border: 1px solid #eee; border-radius: 10px; padding: 10px; text-align: center; position: relative; }
-.product-card img { width: 100%; border-radius: 5px; height: 120px; object-fit: cover; }
+/* Single line Nav */
+.nav-bar-line { display: flex; align-items: center; justify-content: space-between; padding: 10px; background: #fff; border-bottom: 1px solid #ddd; position: sticky; top: 0; z-index: 100; }
+#search-input { width: 40%; padding: 5px; border-radius: 15px; border: 1px solid #ccc; }
+.nav-icons { display: flex; gap: 10px; cursor: pointer; }
+.nav-icons b { font-size: 10px; background: red; color: white; border-radius: 50%; padding: 2px 4px; vertical-align: top; }
 
-/* Price Styling */
-.price-box { margin: 10px 0; }
-.price-red { color: #d9534f; font-weight: bold; font-size: 18px; }
-.price-cut { color: #888; text-decoration: line-through; margin-left: 5px; font-size: 14px; }
+/* 2-Column Grid */
+.grid-container { display: flex; flex-wrap: wrap; gap: 10px; padding: 10px; justify-content: center; }
+.card { width: calc(50% - 15px); background: #fff; border-radius: 8px; padding: 10px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.card img { width: 100%; border-radius: 5px; height: 110px; object-fit: cover; }
+
+/* Price Cut Style */
+.price-line { margin: 8px 0; }
+.new-p { color: #cc0000; font-weight: bold; font-size: 16px; }
+.old-p { color: #888; text-decoration: line-through; font-size: 12px; margin-left: 5px; }
 
 /* Modals */
-.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 200; }
-.modal-content { background: #fff; width: 80%; margin: 20% auto; padding: 20px; border-radius: 10px; position: relative; display: flex; flex-direction: column; gap: 10px; }
-.side-menu a { display: block; padding: 10px; border-bottom: 1px solid #eee; text-decoration: none; color: black; }
-.close-x { position: absolute; right: 10px; top: 10px; border: none; background: none; font-size: 20px; cursor: pointer; }
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; }
+.modal-content { background: #fff; width: 85%; margin: 15% auto; padding: 20px; border-radius: 10px; position: relative; display: flex; flex-direction: column; gap: 10px; }
+.side-nav a { display: block; padding: 12px; border-bottom: 1px solid #eee; text-decoration: none; color: #333; font-weight: bold; }
+.close-btn { position: absolute; right: 10px; top: 10px; border: none; background: none; font-size: 24px; cursor: pointer; }
 
 /* Buttons */
-.qty-control { display: flex; justify-content: center; gap: 5px; margin-bottom: 10px; }
-.qty-input { width: 30px; text-align: center; border: 1px solid #ccc; }
-.add-btn { background: #28a745; color: white; border: none; padding: 8px; width: 100%; border-radius: 5px; }
-.details-btn { width: 100%; margin-bottom: 5px; background: #f0f0f0; border: 1px solid #ccc; border-radius: 3px; font-size: 12px; }
-.wish-heart { position: absolute; top: 5px; right: 5px; background: none; border: none; font-size: 18px; }
+.qty-box { display: flex; justify-content: center; gap: 5px; margin-bottom: 8px; }
+.qty-box input { width: 30px; text-align: center; }
+.view-btn { width: 100%; background: #eee; border: 1px solid #ccc; font-size: 11px; padding: 3px; margin-top: 5px; }
+.add-cart { background: #28a745; color: #fff; border: none; width: 100%; padding: 8px; border-radius: 4px; font-weight: bold; }
+.add-wish { background: none; border: none; color: #555; font-size: 11px; margin-top: 5px; text-decoration: underline; cursor: pointer; }
+.action-btn { background: #0000FF; color: white; padding: 12px; border: none; border-radius: 5px; font-weight: bold; }
