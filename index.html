@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+</<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -65,7 +65,7 @@
 </div>
 
 <div id="cart-modal" class="modal"><div class="modal-content"><h3>My Cart</h3><div id="cart-items">Empty</div><button class="order-btn" onclick="placeOrder()">Order Now via WhatsApp</button></div></div>
-<div id="wishlist-modal" class="modal"><div class="modal-content"><h3>Wishlist</h3><div id="wish-items">Empty</div><button onclick="closeModal('wishlist-modal')">Close</button></div></div>
+<div id="wishlist-modal" class="modal"><div class="modal-content"><h3>Wishlist</h3><div id="wish-items">Empty</div></div></div>
 
 <div id="details-modal" class="modal">
     <div class="modal-content">
@@ -78,42 +78,29 @@
 <h2 class="section-title">Live Fish</h2>
 <div class="product-container">
     <div class="product-card">
-        <button class="wish-btn" onclick="addToWishlist('Betta Fish')">❤️</button>
+        <button class="wish-heart" onclick="addToWishlist('Betta Fish')">❤️</button>
         <img src="image%20folder/Betta.jpg" alt="Betta">
         <h3>Betta Fish</h3>
-        <button class="details-btn" onclick="showDetails('Betta Fish', 'Premium exotic Betta fish with vibrant red fins.')">View Details</button>
-        <p class="price-container"><span class="current-price">₹150</span> <span class="old-price">₹200</span></p>
-        <div class="qty-group">
+        <button class="details-btn" onclick="showDetails('Betta Fish', 'Beautiful vibrant Betta.')">View Details</button>
+        <p class="price-box"><span class="price-red">₹150</span> <span class="price-cut">₹200</span></p>
+        <div class="qty-control">
             <button onclick="changeQty(this, -1)">-</button>
             <input type="number" class="qty-input" value="1" readonly>
             <button onclick="changeQty(this, 1)">+</button>
         </div>
         <button class="add-btn" onclick="addToCart('Betta Fish', 150, this)">Add to Cart</button>
     </div>
-    <div class="product-card">
-        <button class="wish-btn" onclick="addToWishlist('Goldfish')">❤️</button>
-        <img src="image%20folder/Goldfish.jpg" alt="Goldfish">
-        <h3>Goldfish</h3>
-        <button class="details-btn" onclick="showDetails('Goldfish', 'Healthy fancy goldfish for home bowls.')">View Details</button>
-        <p class="price-container"><span class="current-price">₹250</span> <span class="old-price">₹300</span></p>
-        <div class="qty-group">
-            <button onclick="changeQty(this, -1)">-</button>
-            <input type="number" class="qty-input" value="1" readonly>
-            <button onclick="changeQty(this, 1)">+</button>
-        </div>
-        <button class="add-btn" onclick="addToCart('Goldfish', 250, this)">Add to Cart</button>
     </div>
-</div>
 
 <h2 class="section-title">Dry Items</h2>
 <div class="product-container">
     <div class="product-card">
-        <button class="wish-btn" onclick="addToWishlist('Air Pump')">❤️</button>
-        <img src="image%20folder/Air Pump.jpg" alt="Air Pump">
+        <button class="wish-heart" onclick="addToWishlist('Air Pump')">❤️</button>
+        <img src="image%20folder/Air%20Pump.jpg" alt="Air Pump">
         <h3>Air Pump</h3>
-        <button class="details-btn" onclick="showDetails('Air Pump', 'Sobo silent air pump for oxygen.')">View Details</button>
-        <p class="price-container"><span class="current-price">₹350</span> <span class="old-price">₹400</span></p>
-        <div class="qty-group">
+        <button class="details-btn" onclick="showDetails('Air Pump', 'Sobo Air Pump.')">View Details</button>
+        <p class="price-box"><span class="price-red">₹350</span> <span class="price-cut">₹400</span></p>
+        <div class="qty-control">
             <button onclick="changeQty(this, -1)">-</button>
             <input type="number" class="qty-input" value="1" readonly>
             <button onclick="changeQty(this, 1)">+</button>
@@ -124,4 +111,4 @@
 
 <script src="script.js"></script>
 </body>
-            </html>
+    </html>
