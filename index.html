@@ -12,13 +12,24 @@
     <h1 class="main-title">Ayush Aquarium</h1>
     <div class="nav-container">
         <button class="menu-btn" onclick="openModal('side-menu-modal')">☰ Menu</button>
-        <input type="text" id="product-search" placeholder="Search fish...">
+        <input type="text" id="product-search" placeholder="Search fish or items...">
         <div class="nav-right">
             <div class="icon-group" onclick="openModal('wishlist-modal')">❤️ <span id="wish-count" class="count">0</span></div>
             <div class="icon-group" onclick="openModal('cart-modal')">🛒 <span id="cart-count" class="count">0</span></div>
         </div>
     </div>
 </header>
+
+<div id="side-menu-modal" class="modal">
+    <div class="modal-content side-menu">
+        <button class="close-x" onclick="closeModal('side-menu-modal')">×</button>
+        <a href="#" onclick="closeModal('side-menu-modal')">Home</a>
+        <a href="javascript:void(0)" onclick="openModal('account-modal'); closeModal('side-menu-modal')">Account</a>
+        <a href="javascript:void(0)" onclick="alert('Check it in WhatsApp')">Order Info</a>
+        <a href="javascript:void(0)" onclick="openModal('contact-modal')">Contact</a>
+        <a href="javascript:void(0)" onclick="openModal('about-modal')">About Us</a>
+    </div>
+</div>
 
 <div id="account-modal" class="modal">
     <div class="modal-content">
@@ -27,44 +38,90 @@
         <input type="text" id="acc-name" placeholder="Full Name">
         <input type="tel" id="acc-phone" placeholder="Phone No">
         <input type="email" id="acc-email" placeholder="Gmail">
-        <textarea id="acc-address" placeholder="Delivery Address"></textarea>
+        <input type="date" id="acc-dob" placeholder="DOB">
+        <input type="number" id="acc-age" placeholder="Age">
+        <input type="text" id="acc-pin" placeholder="Pin Code">
+        <textarea id="acc-address" placeholder="Full Address"></textarea>
         <button class="save-btn" onclick="saveProfile()">Save Profile</button>
     </div>
 </div>
 
-<div id="cart-modal" class="modal">
+<div id="contact-modal" class="modal">
     <div class="modal-content">
-        <button class="close-x" onclick="closeModal('cart-modal')">×</button>
-        <h3>My Cart</h3>
-        <div id="cart-items">Empty</div>
-        <button class="order-btn" onclick="placeOrder()">Order Now</button>
+        <button class="close-x" onclick="closeModal('contact-modal')">×</button>
+        <h3>Contact Us</h3>
+        <p>Phone no: +91 96416 89471</p>
+        <p>Gmail: pawanrajaksfc471@gmail.com</p>
+        <p>Address: Ghoom, Darjeeling West Bengal</p>
     </div>
 </div>
 
-<div id="side-menu-modal" class="modal">
-    <div class="modal-content side-menu">
-        <button class="close-x" onclick="closeModal('side-menu-modal')">×</button>
-        <a href="#" onclick="closeModal('side-menu-modal')">Home</a>
-        <a href="javascript:void(0)" onclick="openModal('account-modal'); closeModal('side-menu-modal')">Account</a>
-        <a href="javascript:void(0)" onclick="alert('WhatsApp Us for details')">Order Info</a>
+<div id="about-modal" class="modal">
+    <div class="modal-content">
+        <button class="close-x" onclick="closeModal('about-modal')">×</button>
+        <h3>About Us</h3>
+        <p>Dive into a world of vibrant colors at Ayush Aquarium! We bring the ocean's beauty to your home with premium exotic fish and top-tier aquatic supplies. Your passion for the deep is our mission!</p>
+    </div>
+</div>
+
+<div id="cart-modal" class="modal"><div class="modal-content"><h3>My Cart</h3><div id="cart-items">Empty</div><button class="order-btn" onclick="placeOrder()">Order Now via WhatsApp</button></div></div>
+<div id="wishlist-modal" class="modal"><div class="modal-content"><h3>Wishlist</h3><div id="wish-items">Empty</div><button onclick="closeModal('wishlist-modal')">Close</button></div></div>
+
+<div id="details-modal" class="modal">
+    <div class="modal-content">
+        <button class="close-x" onclick="closeModal('details-modal')">×</button>
+        <h3 id="det-name"></h3>
+        <p id="det-text"></p>
     </div>
 </div>
 
 <h2 class="section-title">Live Fish</h2>
 <div class="product-container">
     <div class="product-card">
+        <button class="wish-btn" onclick="addToWishlist('Betta Fish')">❤️</button>
         <img src="image%20folder/Betta.jpg" alt="Betta">
         <h3>Betta Fish</h3>
-        <p class="price">₹150</p>
-        <div class="quantity-controls">
+        <button class="details-btn" onclick="showDetails('Betta Fish', 'Premium exotic Betta fish with vibrant red fins.')">View Details</button>
+        <p class="price-container"><span class="current-price">₹150</span> <span class="old-price">₹200</span></p>
+        <div class="qty-group">
             <button onclick="changeQty(this, -1)">-</button>
-            <input type="number" class="qty-input" value="1" min="1" readonly>
+            <input type="number" class="qty-input" value="1" readonly>
             <button onclick="changeQty(this, 1)">+</button>
         </div>
         <button class="add-btn" onclick="addToCart('Betta Fish', 150, this)">Add to Cart</button>
+    </div>
+    <div class="product-card">
+        <button class="wish-btn" onclick="addToWishlist('Goldfish')">❤️</button>
+        <img src="image%20folder/Goldfish.jpg" alt="Goldfish">
+        <h3>Goldfish</h3>
+        <button class="details-btn" onclick="showDetails('Goldfish', 'Healthy fancy goldfish for home bowls.')">View Details</button>
+        <p class="price-container"><span class="current-price">₹250</span> <span class="old-price">₹300</span></p>
+        <div class="qty-group">
+            <button onclick="changeQty(this, -1)">-</button>
+            <input type="number" class="qty-input" value="1" readonly>
+            <button onclick="changeQty(this, 1)">+</button>
+        </div>
+        <button class="add-btn" onclick="addToCart('Goldfish', 250, this)">Add to Cart</button>
+    </div>
+</div>
+
+<h2 class="section-title">Dry Items</h2>
+<div class="product-container">
+    <div class="product-card">
+        <button class="wish-btn" onclick="addToWishlist('Air Pump')">❤️</button>
+        <img src="image%20folder/Air%20Pump.jpg" alt="Air Pump">
+        <h3>Air Pump</h3>
+        <button class="details-btn" onclick="showDetails('Air Pump', 'Sobo silent air pump for oxygen.')">View Details</button>
+        <p class="price-container"><span class="current-price">₹350</span> <span class="old-price">₹400</span></p>
+        <div class="qty-group">
+            <button onclick="changeQty(this, -1)">-</button>
+            <input type="number" class="qty-input" value="1" readonly>
+            <button onclick="changeQty(this, 1)">+</button>
+        </div>
+        <button class="add-btn" onclick="addToCart('Air Pump', 350, this)">Add to Cart</button>
     </div>
 </div>
 
 <script src="script.js"></script>
 </body>
-    </html>
+            </html>
