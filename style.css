@@ -1,45 +1,13 @@
-* { box-sizing: border-box; }
-body { margin: 0; font-family: sans-serif; background-color: #f4f4f4; }
+.main-title { text-align: center; color: blue; }
+.section-title { text-align: center; margin: 20px 0; }
+.nav-container { display: flex; justify-content: space-around; padding: 10px; background: #fff; }
+#product-search { width: 50%; padding: 5px; border-radius: 15px; border: 1px solid #ccc; }
 
-/* 9. Heading Top Center */
-.main-title { text-align: center; color: blue; margin: 15px 0; font-size: 28px; }
+.product-container { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.product-card { width: calc(50% - 15px); background: #fff; padding: 10px; border-radius: 10px; text-align: center; }
+.product-card img { width: 100%; border-radius: 5px; }
 
-/* 5. Nav Items One Line */
-.nav-container { 
-    display: flex; align-items: center; justify-content: space-between; 
-    padding: 10px; background: white; border-bottom: 1px solid #ddd;
-}
-.menu-wrapper { width: 25%; }
-.menu-btn { background: blue; color: white; border: none; padding: 8px; border-radius: 5px; width: 100%; cursor: pointer; }
-
-#product-search { width: 45%; padding: 8px; border-radius: 20px; border: 1px solid #ccc; }
-
-.nav-right { width: 30%; display: flex; justify-content: flex-end; gap: 15px; }
-.icon-group { cursor: pointer; position: relative; font-size: 20px; }
-.count { background: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 10px; position: absolute; top: -5px; right: -10px; }
-
-/* 10. Headings Middle */
-.section-title { text-align: center; margin: 25px 0; font-weight: bold; }
-
-/* 4. Two fish per row */
-.product-container { display: flex; flex-wrap: wrap; padding: 10px; gap: 10px; justify-content: center; }
-.product-card { width: calc(50% - 15px); background: white; border-radius: 8px; padding: 10px; text-align: center; position: relative; }
-.product-card img { width: 100%; height: 140px; object-fit: cover; border-radius: 5px; }
-
-.wishlist-heart { position: absolute; top: 5px; right: 5px; background: none; border: none; font-size: 20px; cursor: pointer; }
-
-/* 8. View Details Button */
-.details-btn { background: #eee; border: 1px solid #ddd; width: 100%; padding: 5px; margin: 5px 0; border-radius: 4px; font-size: 11px; }
-
-.price { font-weight: bold; margin: 8px 0; }
-
-.quantity-controls { display: flex; justify-content: center; gap: 5px; margin-bottom: 8px; }
-.qty-input { width: 35px; text-align: center; border: 1px solid #ccc; }
-
-.add-btn { background: #28a745; color: white; border: none; width: 100%; padding: 10px; border-radius: 5px; font-weight: bold; }
-
-/* Modals */
-.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; }
-.modal-content { background: white; width: 85%; margin: 15% auto; padding: 20px; border-radius: 10px; position: relative; display: flex; flex-direction: column; gap: 10px; }
-.close-x { position: absolute; right: 10px; top: 10px; font-size: 25px; background: none; border: none; cursor: pointer; }
-.save-btn { background: blue; color: white; padding: 10px; border: none; border-radius: 5px; }
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 999; }
+.modal-content { background: white; margin: 20% auto; padding: 20px; width: 80%; border-radius: 10px; display: flex; flex-direction: column; gap: 10px; }
+.save-btn, .order-btn { background: blue; color: white; padding: 10px; border: none; border-radius: 5px; font-weight: bold; }
+.add-btn { background: green; color: white; border: none; padding: 10px; width: 100%; border-radius: 5px; }
