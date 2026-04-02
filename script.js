@@ -1,90 +1,88 @@
 let cart = [];
 let wishlist = [];
-let userProfile = null;
+let profile = null;
 
+// Modal Controls
 function openModal(id) { document.getElementById(id).style.display = 'block'; }
 function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
-// Search Functionality
-document.getElementById('product-search').addEventListener('input', function(e) {
+// Search Function
+document.getElementById('search-input').addEventListener('input', function(e) {
     let term = e.target.value.toLowerCase();
-    document.querySelectorAll('.product-card').forEach(card => {
-        let name = card.querySelector('h3').innerText.toLowerCase();
+    document.querySelectorAll('.card').forEach(card => {
+        let name = card.querySelector('.prod-name').innerText.toLowerCase();
         card.style.display = name.includes(term) ? "block" : "none";
     });
 });
 
 // Account Logic
-function saveProfile() {
-    const name = document.getElementById('acc-name').value;
-    const phone = document.getElementById('acc-phone').value;
-    const addr = document.getElementById('acc-address').value;
+function saveAccount() {
+    const name = document.getElementById('user-name').value;
+    const phone = document.getElementById('user-phone').value;
+    const address = document.getElementById('user-address').value;
 
-    if (name && phone && addr) {
-        userProfile = { name, phone, addr };
-        alert("Account Details Saved!");
+    if (name && phone && address) {
+        profile = { name, phone, address };
+        alert("Account Saved Successfully!");
         closeModal('account-modal');
     } else {
-        alert("Please fill in Name, Phone, and Address!");
+        alert("Full Name, Phone, and Address are required!");
     }
 }
 
-// Product Logic
-function changeQty(btn, change) {
-    let input = btn.parentElement.querySelector('.qty-input');
-    let val = parseInt(input.value) + change;
-    if (val >= 1) input.value = val;
+// Product Helpers
+function qty(btn, n) {
+    let inp = btn.parentElement.querySelector('input');
+    let v = parseInt(inp.value) + n;
+    if (v >= 1) inp.value = v;
 }
 
-function showDetails(name, info) {
-    document.getElementById('det-name').innerText = name;
-    document.getElementById('det-text').innerText = info;
+function showInfo(title, desc) {
+    document.getElementById('detail-title').innerText = title;
+    document.getElementById('detail-desc').innerText = desc;
     openModal('details-modal');
 }
 
+// Cart & Wishlist Logic
 function addToCart(name, price, btn) {
-    let qty = parseInt(btn.parentElement.querySelector('.qty-input').value);
-    cart.push({ name, price, qty });
+    let count = parseInt(btn.parentElement.querySelector('input').value);
+    cart.push({ name, price, count });
     document.getElementById('cart-count').innerText = cart.length;
-    renderCart();
+    updateCartUI();
     alert(name + " added to cart!");
 }
 
-function addToWishlist(name) {
-    if (!wishlist.includes(name)) {
+function addToWish(name) {
+    if(!wishlist.includes(name)) {
         wishlist.push(name);
         document.getElementById('wish-count').innerText = wishlist.length;
-        renderWishlist();
         alert(name + " added to wishlist!");
     }
 }
 
-function renderCart() {
-    document.getElementById('cart-items').innerHTML = cart.map(i => `<p>${i.qty}x ${i.name} - ₹${i.price * i.qty}</p>`).join('') || "Empty";
+function updateCartUI() {
+    let list = document.getElementById('cart-list');
+    list.innerHTML = cart.map(i => `<p>${i.count}x ${i.name} - ₹${i.price * i.count}</p>`).join('') || "Empty";
 }
 
-function renderWishlist() {
-    document.getElementById('wish-items').innerHTML = wishlist.map(i => `<p>❤️ ${i}</p>`).join('') || "Empty";
-}
-
-// Order via WhatsApp
-function placeOrder() {
+// Professional Ordering
+function validateAndOrder() {
     if (cart.length === 0) return alert("Cart is empty!");
 
-    if (!userProfile) {
-        alert("Please make an account first!");
+    if (!profile) {
+        alert("You must make an account first before placing an order!");
         closeModal('cart-modal');
         openModal('account-modal');
         return;
     }
 
-    let text = `Order from Ayush Aquarium:%0A- Name: ${userProfile.name}%0A- Address: ${userProfile.addr}%0A%0AItems:%0A`;
+    let text = `*New Order: Ayush Aquarium*%0A*Customer:* ${profile.name}%0A*Address:* ${profile.address}%0A%0A*Items:*%0A`;
     let total = 0;
     cart.forEach(i => {
-        text += `- ${i.name} (x${i.qty}): ₹${i.price * i.qty}%0A`;
-        total += i.price * i.qty;
+        text += `- ${i.name} (x${i.count}): ₹${i.price * i.count}%0A`;
+        total += i.price * i.count;
     });
-    text += `%0ATotal: ₹${total}`;
+    text += `%0A*Total: ₹${total}*`;
 
     window.open(`https://wa.me/919641689471?text=${text}`, '_blank');
-        }
+}
