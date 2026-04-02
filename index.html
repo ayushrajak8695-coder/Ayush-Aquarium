@@ -1,4 +1,4 @@
-</<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,46 +10,46 @@
 
 <header>
     <h1 class="main-title">Ayush Aquarium</h1>
-    <div class="nav-container">
-        <button class="menu-btn" onclick="openModal('side-menu-modal')">☰ Menu</button>
-        <input type="text" id="product-search" placeholder="Search fish or items...">
-        <div class="nav-right">
-            <div class="icon-group" onclick="openModal('wishlist-modal')">❤️ <span id="wish-count" class="count">0</span></div>
-            <div class="icon-group" onclick="openModal('cart-modal')">🛒 <span id="cart-count" class="count">0</span></div>
+    <div class="nav-bar-line">
+        <button class="menu-btn" onclick="openModal('side-menu')">☰ Menu</button>
+        <input type="text" id="search-input" placeholder="Search...">
+        <div class="nav-icons">
+            <span onclick="openModal('wishlist-modal')">❤️<b id="wish-count">0</b></span>
+            <span onclick="openModal('cart-modal')">🛒<b id="cart-count">0</b></span>
         </div>
     </div>
 </header>
 
-<div id="side-menu-modal" class="modal">
-    <div class="modal-content side-menu">
-        <button class="close-x" onclick="closeModal('side-menu-modal')">×</button>
-        <a href="#" onclick="closeModal('side-menu-modal')">Home</a>
-        <a href="javascript:void(0)" onclick="openModal('account-modal'); closeModal('side-menu-modal')">Account</a>
-        <a href="javascript:void(0)" onclick="alert('Check it in WhatsApp')">Order Info</a>
-        <a href="javascript:void(0)" onclick="openModal('contact-modal')">Contact</a>
-        <a href="javascript:void(0)" onclick="openModal('about-modal')">About Us</a>
+<div id="side-menu" class="modal">
+    <div class="modal-content side-nav">
+        <button class="close-btn" onclick="closeModal('side-menu')">×</button>
+        <a href="#" onclick="closeModal('side-menu')">Home</a>
+        <a href="#" onclick="openModal('account-modal'); closeModal('side-menu')">Account</a>
+        <a href="#" onclick="alert('Check it in WhatsApp')">Order Info</a>
+        <a href="#" onclick="openModal('contact-modal'); closeModal('side-menu')">Contact</a>
+        <a href="#" onclick="openModal('about-modal'); closeModal('side-menu')">About Us</a>
     </div>
 </div>
 
 <div id="account-modal" class="modal">
     <div class="modal-content">
-        <button class="close-x" onclick="closeModal('account-modal')">×</button>
-        <h3>User Account</h3>
-        <input type="text" id="acc-name" placeholder="Full Name">
-        <input type="tel" id="acc-phone" placeholder="Phone No">
-        <input type="email" id="acc-email" placeholder="Gmail">
-        <input type="date" id="acc-dob" placeholder="DOB">
-        <input type="number" id="acc-age" placeholder="Age">
-        <input type="text" id="acc-pin" placeholder="Pin Code">
-        <textarea id="acc-address" placeholder="Full Address"></textarea>
-        <button class="save-btn" onclick="saveProfile()">Save Profile</button>
+        <button class="close-btn" onclick="closeModal('account-modal')">×</button>
+        <h3>Create Account</h3>
+        <input type="text" id="user-name" placeholder="Full Name">
+        <input type="tel" id="user-phone" placeholder="Phone No">
+        <input type="email" id="user-email" placeholder="Gmail">
+        <input type="date" id="user-dob" title="Date of Birth">
+        <input type="number" id="user-age" placeholder="Age">
+        <input type="text" id="user-pin" placeholder="Pin Code">
+        <textarea id="user-address" placeholder="Full Address"></textarea>
+        <button class="action-btn" onclick="saveAccount()">Save Profile</button>
     </div>
 </div>
 
 <div id="contact-modal" class="modal">
     <div class="modal-content">
-        <button class="close-x" onclick="closeModal('contact-modal')">×</button>
-        <h3>Contact Us</h3>
+        <button class="close-btn" onclick="closeModal('contact-modal')">×</button>
+        <h3>Contact Details</h3>
         <p>Phone no: +91 96416 89471</p>
         <p>Gmail: pawanrajaksfc471@gmail.com</p>
         <p>Address: Ghoom, Darjeeling West Bengal</p>
@@ -58,73 +58,77 @@
 
 <div id="about-modal" class="modal">
     <div class="modal-content">
-        <button class="close-x" onclick="closeModal('about-modal')">×</button>
-        <h3>About Us</h3>
-        <p>Dive into a world of vibrant colors at Ayush Aquarium! We bring the ocean's beauty to your home with premium exotic fish and top-tier aquatic supplies. Your passion for the deep is our mission!</p>
+        <button class="close-btn" onclick="closeModal('about-modal')">×</button>
+        <h3>About Ayush Aquarium</h3>
+        <p>Where passion meets the deep blue. We provide premium exotic fish and aquatic essentials to transform your space into a living masterpiece.</p>
     </div>
 </div>
 
-<div id="cart-modal" class="modal"><div class="modal-content"><h3>My Cart</h3><div id="cart-items">Empty</div><button class="order-btn" onclick="placeOrder()">Order Now via WhatsApp</button></div></div>
-<div id="wishlist-modal" class="modal"><div class="modal-content"><h3>Wishlist</h3><div id="wish-items">Empty</div></div></div>
+<div id="cart-modal" class="modal">
+    <div class="modal-content">
+        <button class="close-btn" onclick="closeModal('cart-modal')">×</button>
+        <h3>My Cart</h3>
+        <div id="cart-list">Your cart is empty</div>
+        <button class="action-btn" onclick="validateAndOrder()">Order via WhatsApp</button>
+    </div>
+</div>
 
 <div id="details-modal" class="modal">
     <div class="modal-content">
-        <button class="close-x" onclick="closeModal('details-modal')">×</button>
-        <h3 id="det-name"></h3>
-        <p id="det-text"></p>
+        <button class="close-btn" onclick="closeModal('details-modal')">×</button>
+        <h3 id="detail-title"></h3>
+        <p id="detail-desc"></p>
     </div>
 </div>
 
-<h2 class="section-title">Live Fish</h2>
-<div class="product-container">
-    <div class="product-card">
-        <button class="wish-heart" onclick="addToWishlist('Betta Fish')">❤️</button>
+<h2 class="center-head">Live Fish</h2>
+<div class="grid-container">
+    <div class="card">
         <img src="image%20folder/Betta.jpg" alt="Betta">
-        <h3>Betta Fish</h3>
-        <button class="details-btn" onclick="showDetails('Betta Fish', 'Beautiful vibrant Betta.')">View Details</button>
-        <p class="price-box"><span class="price-red">₹150</span> <span class="price-cut">₹200</span></p>
-        <div class="qty-control">
-            <button onclick="changeQty(this, -1)">-</button>
-            <input type="number" class="qty-input" value="1" readonly>
-            <button onclick="changeQty(this, 1)">+</button>
+        <h4 class="prod-name">Betta Fish</h4>
+        <button class="view-btn" onclick="showInfo('Betta Fish', 'Premium colorful Betta.')">View Details</button>
+        <p class="price-line"><span class="new-p">₹150</span> <span class="old-p">₹200</span></p>
+        <div class="qty-box">
+            <button onclick="qty(this, -1)">-</button>
+            <input type="number" value="1" readonly>
+            <button onclick="qty(this, 1)">+</button>
         </div>
-        <button class="add-btn" onclick="addToCart('Betta Fish', 150, this)">Add to Cart</button>
-    </div>
+        <button class="add-cart" onclick="addToCart('Betta Fish', 150, this)">Add to Cart</button>
+        <button class="add-wish" onclick="addToWish('Betta Fish')">Add to Wishlist</button>
     </div>
 
-    <div class="product-container">
-    <div class="product-card">
-        <button class="wish-heart" onclick="addToWishlist('Betta Fish')">❤️</button>
-        <img src="image%20folder/Betta.jpg" alt="Betta">
-        <h3>Betta Fish</h3>
-        <button class="details-btn" onclick="showDetails('Betta Fish', 'Beautiful vibrant Betta.')">View Details</button>
-        <p class="price-box"><span class="price-red">₹150</span> <span class="price-cut">₹200</span></p>
-        <div class="qty-control">
-            <button onclick="changeQty(this, -1)">-</button>
-            <input type="number" class="qty-input" value="1" readonly>
-            <button onclick="changeQty(this, 1)">+</button>
+    <div class="card">
+        <img src="image%20folder/Goldfish.jpg" alt="Goldfish">
+        <h4 class="prod-name">Goldfish</h4>
+        <button class="view-btn" onclick="showInfo('Goldfish', 'Healthy fancy goldfish.')">View Details</button>
+        <p class="price-line"><span class="new-p">₹250</span> <span class="old-p">₹300</span></p>
+        <div class="qty-box">
+            <button onclick="qty(this, -1)">-</button>
+            <input type="number" value="1" readonly>
+            <button onclick="qty(this, 1)">+</button>
         </div>
-        <button class="add-btn" onclick="addToCart('Betta Fish', 150, this)">Add to Cart</button>
+        <button class="add-cart" onclick="addToCart('Goldfish', 250, this)">Add to Cart</button>
+        <button class="add-wish" onclick="addToWish('Goldfish')">Add to Wishlist</button>
     </div>
-    </div>
-    
-<h2 class="section-title">Dry Items</h2>
-<div class="product-container">
-    <div class="product-card">
-        <button class="wish-heart" onclick="addToWishlist('Air Pump')">❤️</button>
-        <img src="image%20folder/Air%20Pump.jpg" alt="Air Pump">
-        <h3>Air Pump</h3>
-        <button class="details-btn" onclick="showDetails('Air Pump', 'Sobo Air Pump.')">View Details</button>
-        <p class="price-box"><span class="price-red">₹350</span> <span class="price-cut">₹400</span></p>
-        <div class="qty-control">
-            <button onclick="changeQty(this, -1)">-</button>
-            <input type="number" class="qty-input" value="1" readonly>
-            <button onclick="changeQty(this, 1)">+</button>
+</div>
+
+<h2 class="center-head">Dry Items</h2>
+<div class="grid-container">
+    <div class="card">
+        <img src="image%20folder/Air%20Pump.jpg" alt="Pump">
+        <h4 class="prod-name">Air Pump</h4>
+        <button class="view-btn" onclick="showInfo('Air Pump', 'Sobo high-power air pump.')">View Details</button>
+        <p class="price-line"><span class="new-p">₹350</span> <span class="old-p">₹400</span></p>
+        <div class="qty-box">
+            <button onclick="qty(this, -1)">-</button>
+            <input type="number" value="1" readonly>
+            <button onclick="qty(this, 1)">+</button>
         </div>
-        <button class="add-btn" onclick="addToCart('Air Pump', 350, this)">Add to Cart</button>
+        <button class="add-cart" onclick="addToCart('Air Pump', 350, this)">Add to Cart</button>
+        <button class="add-wish" onclick="addToWish('Air Pump')">Add to Wishlist</button>
     </div>
 </div>
 
 <script src="script.js"></script>
 </body>
-    </html>
+</html>
