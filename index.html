@@ -92,6 +92,22 @@
     </div>
     </div>
 
+    <div class="product-container">
+    <div class="product-card">
+        <button class="wish-heart" onclick="addToWishlist('Betta Fish')">❤️</button>
+        <img src="image%20folder/Betta.jpg" alt="Betta">
+        <h3>Betta Fish</h3>
+        <button class="details-btn" onclick="showDetails('Betta Fish', 'Beautiful vibrant Betta.')">View Details</button>
+        <p class="price-box"><span class="price-red">₹150</span> <span class="price-cut">₹200</span></p>
+        <div class="qty-control">
+            <button onclick="changeQty(this, -1)">-</button>
+            <input type="number" class="qty-input" value="1" readonly>
+            <button onclick="changeQty(this, 1)">+</button>
+        </div>
+        <button class="add-btn" onclick="addToCart('Betta Fish', 150, this)">Add to Cart</button>
+    </div>
+    </div>
+    
 <h2 class="section-title">Dry Items</h2>
 <div class="product-container">
     <div class="product-card">
